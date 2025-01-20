@@ -1,0 +1,26 @@
+[32m2025-01-20 19:10:44 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b28008a1-aee7-4506-8cee-07e485ec29cc - 7899 - LOGS_CAPTURED - Started capturing logs in process (pid: 7899).
+[32m2025-01-20 19:10:44 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b28008a1-aee7-4506-8cee-07e485ec29cc - 7899 - ufc_athletes_data - STEP_START - Started execution of step "ufc_athletes_data".
+[32m2025-01-20 19:10:58 +0000[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - b28008a1-aee7-4506-8cee-07e485ec29cc - 7899 - ufc_athletes_data - STEP_FAILURE - Execution of step "ufc_athletes_data" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "ufc_athletes_data"::
+
+FileNotFoundError: [Errno 2] No such file or directory: '/home/gassuncao/mma-status/mma-stats/data/raw/ufc_athletes.csv'
+
+Stack Trace:
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 473, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 141, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 129, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+                                                                    ^^^^^^^^^^^^^^^^^^
+  File "/home/gassuncao/mma-status/mma-stats/mma_stats/assets/ufc_athletes.py", line 31, in ufc_athletes_data
+    save_to_csv(all_athletes)
+  File "/home/gassuncao/mma-status/mma-stats/mma_stats/functions/scraping_functions/ufc_athletes.py", line 265, in save_to_csv
+    with open(filename, "w", newline="", encoding="utf-8") as file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0m

@@ -1,0 +1,2 @@
+[32m2025-01-20 20:28:20 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - bb2ba722-7bfd-460f-96e3-483fe8b43a56 - 40894 - LOGS_CAPTURED - Started capturing logs in process (pid: 40894).
+[32m2025-01-20 20:28:20 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - bb2ba722-7bfd-460f-96e3-483fe8b43a56 - 40894 - ufc_athletes_data - STEP_START - Started execution of step "ufc_athletes_data".

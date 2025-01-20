@@ -1,0 +1,7 @@
+dagster==1.7.*
+pandas
+beautifulsoup4==4.12.3
+
+[dev]
+dagster-webserver
+pytest
