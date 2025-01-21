@@ -3,7 +3,7 @@ import time
 from functools import wraps
 from typing import Callable, Any
 import requests
-from constants import REQUEST_DELAY
+from ..constants import REQUEST_DELAY
 
 logging.basicConfig(
     level=logging.INFO,

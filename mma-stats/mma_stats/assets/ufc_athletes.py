@@ -1,31 +1,52 @@
-from . import constants
-import time
-from ..functions.scraping_functions.ufc_athletes import (
-    scrape_athletes_from_page,
-    save_to_csv
-)
-from dagster import asset
+from .. import constants
+from ..scrappers.ufc_athletes_scrapper import UFCScraper
+from ..resources.clickhouse_resource import clickhouse_resource
+from dagster import asset, OpExecutionContext
+
+import pandas as pd
 
 BASE_URL = constants.BASE_ATHLETES_URL
 
-@asset
-# Função para percorrer as páginas e coletar todos os atletas
-def ufc_athletes_data() -> None:
-    all_athletes = []
-    page = 1
+@asset(
+    required_resource_keys={"clickhouse"},
+)
+def ufc_athletes_data(context: OpExecutionContext) -> None:
+    """
+    Function to scrape all UFC athletes and insert them into the ClickHouse database.
+    """
+
+    database = "mma_stats_bronze"
+    table_name = "ufc_athletes"
+    engine = "MergeTree"
+    order_by = "Athlete_ID"
+
+    client = context.resources.clickhouse
+    scraper = UFCScraper()
+
+    create_db_query = f"""
+        CREATE DATABASE IF NOT EXISTS {database}
+    """
+    client.execute(create_db_query)
+
+    cols = ", ".join(f"`{col}` {dtype}" for col, dtype in constants.UFC_ATHLETES_COLUMNS.items())
+    order_clause = f"ORDER BY {order_by}" if order_by else ""
+    create_table_query = f"CREATE TABLE IF NOT EXISTS {database}.{table_name} ({cols}) ENGINE = {engine} {order_clause}"
+
+    print(create_table_query)
+    client.execute(create_table_query)
+
+    delete_query = f"""
+        ALTER TABLE {database}.{table_name}
+        DELETE WHERE 1
+    """
+    client.execute(delete_query)
+
+    athletes = scraper.scrape_all_athletes()
+
+    athletes_data = [athlete.to_dict() for athlete in athletes]
     
-    while True:
-        print(f"Scraping page {page}...")
-        url = f"{BASE_URL}?page={page}"
-        athletes = scrape_athletes_from_page(url)
-        
-        if not athletes:
-            break
-        
-        all_athletes.extend(athletes)
-        page += 1
-        
-        # Pausar entre requisições para evitar sobrecarga no servidor
-        time.sleep(2)  # Atraso de 2 segundos entre requisições
-        
-        save_to_csv(all_athletes)
+    df = pd.DataFrame(athletes_data)
+
+    client.insert_dataframe(f"INSERT INTO mma_stats_bronze.ufc_athletes VALUES", df)
+
+    print(f"{len(df)} registros inseridos com sucesso!")
