@@ -1,7 +1,8 @@
 from typing import Final
 
 BASE_ATHLETES_URL = "https://www.ufc.com.br/athletes/all"
-BASE_URL: Final = "https://www.ufc.com.br/athletes/all"
+BASE_PROFILES_URL = "https://www.ufc.com.br/athlete/"
+BASE_RECORDS_URL = "https://www.ufc.com.br/athlete/records/"
 REQUEST_DELAY: Final = 2  # segundos
 MAX_RETRIES: Final = 3
 
