@@ -3,13 +3,13 @@ import logging
 from typing import List, Dict, Optional
 import csv
 
-from ..constants import BASE_URL, SELECTORS
+from ..constants import BASE_ATHLETES_URL, SELECTORS
 from ..utils.exceptions import RequestException, ParsingException
 from ..models.athletes import Athlete
 from ..utils.requests_utils import retry_on_failure, make_request
 
 class UFCScraper:
-    def __init__(self, base_url: str = BASE_URL):
+    def __init__(self, base_url: str = BASE_ATHLETES_URL):
         self.base_url = base_url
 
     @retry_on_failure()
@@ -65,7 +65,7 @@ class UFCScraper:
         page = 1
         
         print(f"Scraping page {page}...")
-        while page <= 1:
+        while True:
             logging.info(f"Scraping página {page}...")
             url = f"{self.base_url}?page={page}"
             athletes = self.scrape_athletes_from_page(url)

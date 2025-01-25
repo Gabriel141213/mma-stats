@@ -1,0 +1,18 @@
+[32m2025-01-25 18:48:21 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 81faae72-bfab-4fa1-8c0f-79ed01753b50 - 19792 - LOGS_CAPTURED - Started capturing logs in process (pid: 19792).
+[32m2025-01-25 18:48:21 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 81faae72-bfab-4fa1-8c0f-79ed01753b50 - 19792 - ufc_athletes_data - STEP_START - Started execution of step "ufc_athletes_data".
+2025-01-25 18:48:21,904 - INFO - Scraping página 1...
+[32m2025-01-25 18:48:47 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 81faae72-bfab-4fa1-8c0f-79ed01753b50 - 19792 - ufc_athletes_data - STEP_OUTPUT - Yielded output "result" of type "Nothing". Warning! Type check failed.
+[32m2025-01-25 18:48:47 +0000[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - 81faae72-bfab-4fa1-8c0f-79ed01753b50 - 19792 - ufc_athletes_data - STEP_FAILURE - Execution of step "ufc_athletes_data" failed.
+
+dagster._core.errors.DagsterTypeCheckDidNotPass: Type check failed for step output "result" - expected type "Nothing". Description: Value must be None, got a <class 'list'>
+
+Stack Trace:
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_plan.py", line 282, in dagster_event_sequence_for_step
+    for step_event in check.generator(step_events):
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_step.py", line 501, in core_dagster_event_sequence_for_step
+    for evt in _type_check_and_store_output(step_context, user_event):
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_step.py", line 551, in _type_check_and_store_output
+    for output_event in _type_check_output(step_context, step_output_handle, output, version):
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_step.py", line 419, in _type_check_output
+    raise DagsterTypeCheckDidNotPass(
+[0m

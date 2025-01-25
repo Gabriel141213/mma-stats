@@ -48,6 +48,16 @@ UFC_ATHLETES_COLUMNS = {
     'Hometown': 'String'
 }
 
+UFC_ATHLETES_RECORDS_COLUMNS = {
+    'Athlete_ID': 'String',
+    'Opponent_ID': 'String',
+    'Fight_Date': 'String',
+    'Last_Round': 'String',
+    'End_Time': 'String',
+    'Victory_Method': 'String',
+    'Fight_Result': 'String'
+}
+
 SELECTORS = {
     'name': 'span.c-listing-athlete__name',
     'nickname': 'span.c-listing-athlete__nickname',
