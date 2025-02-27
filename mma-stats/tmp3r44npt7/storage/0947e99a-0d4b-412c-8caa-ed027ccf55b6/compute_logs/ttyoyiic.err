@@ -1,0 +1,11 @@
+[32m2025-01-26 04:04:35 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 0947e99a-0d4b-412c-8caa-ed027ccf55b6 - 189925 - LOGS_CAPTURED - Started capturing logs in process (pid: 189925).
+[32m2025-01-26 04:04:35 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 0947e99a-0d4b-412c-8caa-ed027ccf55b6 - 189925 - ufc_athletes_records_data - STEP_START - Started execution of step "ufc_athletes_records_data".
+2025-01-26 04:04:35,996 - INFO - Context impl SQLiteImpl.
+2025-01-26 04:04:35,997 - INFO - Will assume non-transactional DDL.
+2025-01-26 04:04:36,013 - INFO - Context impl SQLiteImpl.
+2025-01-26 04:04:36,013 - INFO - Will assume non-transactional DDL.
+2025-01-26 04:04:36,025 - INFO - Running stamp_revision  -> 46b412388816
+[32m2025-01-26 04:04:36 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 0947e99a-0d4b-412c-8caa-ed027ccf55b6 - ufc_athletes_records_data - Loading file from: /home/gassuncao/mma-status/mma-stats/tmp3r44npt7/storage/ufc_athletes_data using PickledObjectFilesystemIOManager...
+[32m2025-01-26 04:04:36 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 0947e99a-0d4b-412c-8caa-ed027ccf55b6 - 189925 - ufc_athletes_records_data - LOADED_INPUT - Loaded input "athletes_ids" using input manager "io_manager", from output "result" of step "ufc_athletes_data"
+[32m2025-01-26 04:04:36 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 0947e99a-0d4b-412c-8caa-ed027ccf55b6 - 189925 - ufc_athletes_records_data - STEP_INPUT - Got input "athletes_ids" of type "[Any]". (Type check passed).
+2025-01-26 08:50:03,361 - WARNING - Tentativa 1 falhou: RequestException: Erro ao processar página https://www.ufc.com.br/athlete/gegard-mousasi: ('Connection broken: IncompleteRead(0 bytes read, 20627 more expected)', IncompleteRead(0 bytes read, 20627 more expected)). Tentando novamente...

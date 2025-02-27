@@ -1,0 +1,16 @@
+[32m2025-01-26 15:11:57 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 9d9d3ea5-aa29-495d-8389-368a54979054 - 848443 - LOGS_CAPTURED - Started capturing logs in process (pid: 848443).
+[32m2025-01-26 15:11:57 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 9d9d3ea5-aa29-495d-8389-368a54979054 - 848443 - ufc_athletes_records_data - STEP_START - Started execution of step "ufc_athletes_records_data".
+2025-01-26 15:11:57,325 - INFO - Context impl SQLiteImpl.
+2025-01-26 15:11:57,326 - INFO - Will assume non-transactional DDL.
+2025-01-26 15:11:57,346 - INFO - Context impl SQLiteImpl.
+2025-01-26 15:11:57,346 - INFO - Will assume non-transactional DDL.
+2025-01-26 15:11:57,367 - INFO - Running stamp_revision  -> 46b412388816
+[32m2025-01-26 15:11:57 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 9d9d3ea5-aa29-495d-8389-368a54979054 - ufc_athletes_records_data - Loading file from: /home/gassuncao/mma-status/mma-stats/tmpl1nzdec8/storage/ufc_athletes_data using PickledObjectFilesystemIOManager...
+[32m2025-01-26 15:11:57 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 9d9d3ea5-aa29-495d-8389-368a54979054 - 848443 - ufc_athletes_records_data - LOADED_INPUT - Loaded input "athletes_ids" using input manager "io_manager", from output "result" of step "ufc_athletes_data"
+[32m2025-01-26 15:11:57 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 9d9d3ea5-aa29-495d-8389-368a54979054 - 848443 - ufc_athletes_records_data - STEP_INPUT - Got input "athletes_ids" of type "[Any]". (Type check passed).
+2025-01-26 17:31:16,165 - WARNING - Tentativa 1 falhou: RequestException: Erro ao processar página https://www.ufc.com.br/athlete/kron-gracie: ('Connection broken: IncompleteRead(0 bytes read, 23995 more expected)', IncompleteRead(0 bytes read, 23995 more expected)). Tentando novamente...
+2025-01-26 22:35:00,676 - WARNING - Error on localhost:9000 ping: Unexpected EOF while reading bytes
+2025-01-26 22:35:00,679 - WARNING - Connection was closed, reconnecting.
+[32m2025-01-26 22:35:00 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 9d9d3ea5-aa29-495d-8389-368a54979054 - 848443 - ufc_athletes_records_data - STEP_OUTPUT - Yielded output "result" of type "Nothing". (Type check passed).
+[32m2025-01-26 22:35:00 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 9d9d3ea5-aa29-495d-8389-368a54979054 - 848443 - ufc_athletes_records_data - ASSET_MATERIALIZATION - Materialized value ufc_athletes_records_data.
+[32m2025-01-26 22:35:00 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 9d9d3ea5-aa29-495d-8389-368a54979054 - 848443 - ufc_athletes_records_data - STEP_SUCCESS - Finished execution of step "ufc_athletes_records_data" in 7h23m.
