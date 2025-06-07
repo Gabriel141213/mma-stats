@@ -1,0 +1,10 @@
+[32m2025-03-02 21:18:55 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - d4c55f4c-77a6-480a-81a8-aeac55d31d0d - 215266 - LOGS_CAPTURED - Started capturing logs in process (pid: 215266).
+[32m2025-03-02 21:18:55 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - d4c55f4c-77a6-480a-81a8-aeac55d31d0d - 215266 - ufc_athletes_records_handled_data - STEP_START - Started execution of step "ufc_athletes_records_handled_data".
+2025-03-02 21:18:55,273 - INFO - Context impl SQLiteImpl.
+2025-03-02 21:18:55,274 - INFO - Will assume non-transactional DDL.
+2025-03-02 21:18:55,296 - INFO - Context impl SQLiteImpl.
+2025-03-02 21:18:55,296 - INFO - Will assume non-transactional DDL.
+2025-03-02 21:18:55,346 - INFO - Running stamp_revision  -> 46b412388816
+[32m2025-03-02 21:18:56 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - d4c55f4c-77a6-480a-81a8-aeac55d31d0d - 215266 - ufc_athletes_records_handled_data - STEP_OUTPUT - Yielded output "result" of type "Nothing". (Type check passed).
+[32m2025-03-02 21:18:56 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - d4c55f4c-77a6-480a-81a8-aeac55d31d0d - 215266 - ufc_athletes_records_handled_data - ASSET_MATERIALIZATION - Materialized value ufc_athletes_records_handled_data.
+[32m2025-03-02 21:18:56 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - d4c55f4c-77a6-480a-81a8-aeac55d31d0d - 215266 - ufc_athletes_records_handled_data - STEP_SUCCESS - Finished execution of step "ufc_athletes_records_handled_data" in 863ms.

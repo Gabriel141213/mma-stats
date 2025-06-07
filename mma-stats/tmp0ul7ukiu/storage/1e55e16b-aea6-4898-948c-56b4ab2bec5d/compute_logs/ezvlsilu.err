@@ -1,0 +1,30 @@
+[32m2025-03-02 18:16:50 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 1e55e16b-aea6-4898-948c-56b4ab2bec5d - 38863 - LOGS_CAPTURED - Started capturing logs in process (pid: 38863).
+[32m2025-03-02 18:16:50 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 1e55e16b-aea6-4898-948c-56b4ab2bec5d - 38863 - ufc_athletes_handler - STEP_START - Started execution of step "ufc_athletes_handler".
+[32m2025-03-02 18:16:50 +0000[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - 1e55e16b-aea6-4898-948c-56b4ab2bec5d - 38863 - ufc_athletes_handler - STEP_FAILURE - Execution of step "ufc_athletes_handler" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "ufc_athletes_handler"::
+
+AttributeError: 'DataFrame' object has no attribute 'str'. Did you mean: 'std'?
+
+Stack Trace:
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 473, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 141, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 129, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gassuncao/mma-status/mma-stats/mma_stats/assets/ufc_athletes.py", line 136, in ufc_athletes_handler
+    athletes['Average_Fight_Time'] = time_to_seconds_vectorized(athletes['Average_Fight_Time'])
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gassuncao/mma-status/mma-stats/mma_stats/assets/ufc_athletes.py", line 117, in time_to_seconds_vectorized
+    split_time = series.str.strip().str.split(':', expand=True)
+                 ^^^^^^^^^^
+  File "/home/gassuncao/mma-status/venv/lib/python3.12/site-packages/pandas/core/generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0m
