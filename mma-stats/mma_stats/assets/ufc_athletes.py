@@ -96,7 +96,7 @@ def ufc_athletes_records_data(context: OpExecutionContext, athletes_ids: list) -
     df = pd.DataFrame(records_data)
 
     client.insert_dataframe(f"INSERT INTO mma_stats_bronze.ufc_athletes_records VALUES", df)
-
+    
     print(f"{len(df)} registros inseridos com sucesso!")
 
 

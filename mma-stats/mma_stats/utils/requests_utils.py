@@ -10,6 +10,15 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/115.0.0.0 Safari/537.36"
+    )
+}
+
+
 def retry_on_failure(max_retries: int = 3, delay: int = 1) -> Callable:
     def decorator(func: Callable) -> Callable:
         @wraps(func)
@@ -36,7 +45,7 @@ def rate_limit(func: Callable) -> Callable:
     return wrapper
 
 @rate_limit
-def make_request(url: str) -> requests.Response:
-    response = requests.get(url)
+def make_request(url: str, **kwargs) -> requests.Response:
+    response = requests.get(url, headers=HEADERS, **kwargs)
     response.raise_for_status()
     return response
