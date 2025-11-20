@@ -208,7 +208,7 @@ class UFCScraper:
             if win_by_method_section:
                 for section in win_by_method_section:
                     title = section.find("h2", class_="c-stat-3bar__title")
-                    if title and "Win by Method" in title.text:
+                    if title and ("Win by Method" in title.text or "Vitórias por Método" in title.text):
                         method_groups = section.find_all("div", class_="c-stat-3bar__group")
                         for method in method_groups:
                             method_label = method.find("div", class_="c-stat-3bar__label").text.strip()

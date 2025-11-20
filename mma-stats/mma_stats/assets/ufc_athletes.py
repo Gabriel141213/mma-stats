@@ -49,7 +49,8 @@ def ufc_athletes_data(context: OpExecutionContext) -> list:
     
     df = pd.DataFrame(athletes_data)
 
-    client.insert_dataframe(f"INSERT INTO mma_stats_bronze.ufc_athletes VALUES", df)
+    # client.insert_dataframe(f"INSERT INTO mma_stats_bronze.ufc_athletes VALUES", df)
+    client.execute(f"INSERT INTO {database}.{table_name} VALUES", df.to_dict('records'))
 
     print(f"{len(df)} registros inseridos com sucesso!")
 
@@ -94,8 +95,8 @@ def ufc_athletes_records_data(context: OpExecutionContext, athletes_ids: list) -
     records_data = [athletes_record.to_dict() for athletes_record in athletes_records]
 
     df = pd.DataFrame(records_data)
-
-    client.insert_dataframe(f"INSERT INTO mma_stats_bronze.ufc_athletes_records VALUES", df)
+    # client.insert_dataframe(f"INSERT INTO mma_stats_bronze.ufc_athletes_records VALUES", df)
+    client.execute(f"INSERT INTO {database}.{table_name} VALUES", df.to_dict('records'))
     
     print(f"{len(df)} registros inseridos com sucesso!")
 
@@ -119,6 +120,11 @@ def ufc_athletes_handled_data(context: OpExecutionContext) -> None:
     database = "mma_stats_silver"
     table_name = "ufc_athletes"
     engine = "MergeTree"
+
+    create_db_query = f"""
+        CREATE DATABASE IF NOT EXISTS {database}
+    """
+    client.execute(create_db_query)
 
     cols = ", ".join(f"`{col}` {dtype}" for col, dtype in constants.UFC_ATHLETES_SILVER_COLUMNS.items())
 
@@ -162,6 +168,11 @@ def ufc_athletes_records_handled_data(context: OpExecutionContext) -> None:
     database = "mma_stats_silver"
     table_name = "ufc_athletes_records"
     engine = "MergeTree"
+
+    create_db_query = f"""
+        CREATE DATABASE IF NOT EXISTS {database}
+    """
+    client.execute(create_db_query)
 
     cols = ", ".join(f"`{col}` {dtype}" for col, dtype in constants.UFC_ATHLETES_RECORDS_SILVER_COLUMNS.items())
 
